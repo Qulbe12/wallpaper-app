@@ -2,16 +2,18 @@ import React from 'react';
 import Main from "./src/Main";
 import {NavigationContainer} from '@react-navigation/native';
 import {navTheme} from "./src/config/theme";
-import {GluestackUIProvider, SafeAreaView} from "@gluestack-ui/themed";
+import {GluestackUIProvider} from "@gluestack-ui/themed";
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import {config} from "@gluestack-ui/config";
 
 
 const App = () => {
     return (
         <NavigationContainer theme={navTheme}>
-            <GluestackUIProvider>
-                <SafeAreaView flex={1}>
+            <GluestackUIProvider config={config}>
+                <SafeAreaProvider>
                     <Main/>
-                </SafeAreaView>
+                </SafeAreaProvider>
             </GluestackUIProvider>
         </NavigationContainer>
     )

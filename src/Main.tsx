@@ -1,10 +1,8 @@
-import {Text, View} from "react-native";
+import MainStack from "./stacks/MainStack";
 
 const Main = () => {
     return (
-        <View>
-            <Text>hi from main</Text>
-        </View>
+        <MainStack/>
     );
 };
 
