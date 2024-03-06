@@ -34,8 +34,9 @@ const HomePage = () => {
                     <TextareaInput placeholder="Paste your Asset id here"/>
                 </Textarea>
                 <Button
+                    borderRadius={12}
                     my={12}
-                    size="md"
+                    size="xl"
                     variant="solid"
                     bg="#9013FE"
                     action="primary"
@@ -43,7 +44,7 @@ const HomePage = () => {
                     isFocusVisible={false}
                     onPress={() => navigation.navigate("Asset Detail" as never)}
                 >
-                    <ButtonText>Add </ButtonText>
+                    <ButtonText>Verify NFT</ButtonText>
                 </Button>
             </Card>
 
