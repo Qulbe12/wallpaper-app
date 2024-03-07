@@ -98,7 +98,7 @@ const HomePage = () => {
             setLoading(false)
         } catch (e) {
             const error = e as AxiosError
-
+            setForm({nft:""})
             setAsset({
                 asset: {
                     'created-at-round': null,
