@@ -5,10 +5,16 @@ import AssetDetails from "../pages/AssetDetails";
 const Stack = createNativeStackNavigator();
 const MainStack = () => {
 
+
     return (
         <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen name="Home" component={HomePage}/>
-            <Stack.Screen name="Asset Detail" component={AssetDetails}/>
+            {isAuthenticated ? (
+                <Stack.Screen head name="Home" component={HomePage}/>
+            ) : (
+                <Stack.Screen name="Asset Detail" component={AssetDetails}/>
+            )}
+
+
         </Stack.Navigator>
     );
 };
