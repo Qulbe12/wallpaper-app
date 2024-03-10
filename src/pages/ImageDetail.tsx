@@ -16,6 +16,7 @@ import {useRoute} from "@react-navigation/native";
 import {Dimensions} from "react-native";
 import {Entypo, Feather} from '@expo/vector-icons';
 import {downloadImage} from "../utils/imageDownloader";
+import * as MediaLibrary from 'expo-media-library';
 
 const ImageDetail = () => {
     const {width, height} = Dimensions.get("window");
@@ -24,6 +25,7 @@ const ImageDetail = () => {
     const item = route.params.item;
     // const [progress, setProgress] = useState(false);
 
+    const [permissionResponse, requestPermission] = MediaLibrary.usePermissions()
 
     return (
         <>
@@ -64,6 +66,7 @@ const ImageDetail = () => {
                     }}
                 >
                     <MenuItem onPress={async () => {
+                        await requestPermission()
                         await downloadImage(item?.src?.original)
                     }} key="Community" textValue="Community">
                         <HStack alignItems='center'>

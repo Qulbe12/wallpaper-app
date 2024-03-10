@@ -10,11 +10,11 @@ import {
     Heading,
     HStack,
     Image,
-    Input,
-    InputField,
     ScrollView,
     Spinner,
     Text,
+    Textarea,
+    TextareaInput,
     Toast,
     ToastDescription,
     ToastTitle,
@@ -128,7 +128,7 @@ const HomePage = () => {
                                 verify NFT
                                 ownership to get your wallpaper.</Text>
                             <FormControl isInvalid>
-                                <Input
+                                <Textarea
                                     mt={12}
                                     size="md"
                                     isReadOnly={false}
@@ -136,9 +136,9 @@ const HomePage = () => {
                                     isDisabled={false}
                                     w="100%"
                                 >
-                                    <InputField placeholder="Paste your Wallet address here"
-                                                onChangeText={(e) => setForm({...form, nft: e})}/>
-                                </Input>
+                                    <TextareaInput placeholder="Paste your Asset id here"
+                                                   onChangeText={(e) => setForm({...form, nft: e})}/>
+                                </Textarea>
                                 <FormControlError>
                                     {/* <FormControlErrorIcon as={AlertCircleIcon} /> */}
                                     <FormControlErrorText>
