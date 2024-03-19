@@ -26,6 +26,7 @@ import * as yup from "yup";
 import {axiosInstance} from '../config/axios.config';
 import {AxiosError} from 'axios';
 import SuccessModal from "../components/SuccessModal";
+import {SafeAreaView} from "react-native-safe-area-context";
 
 const schema = yup.object().shape({
     nft: yup.string().required("this field should not be empty"),
@@ -98,7 +99,7 @@ const HomePage = () => {
     };
 
     return (
-        <>
+        <SafeAreaView style={{flex: 1}}>
             {loading ?
                 <VStack bg="white" h="100%" w="100%">
                     <Center h="100%" w="100%">
@@ -164,7 +165,7 @@ const HomePage = () => {
                 </ScrollView>
             }
             <SuccessModal showModal={show} setShowModal={setShow} id={id}/>
-        </>
+        </SafeAreaView>
     );
 };
 

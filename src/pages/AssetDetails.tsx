@@ -17,16 +17,14 @@ const AssetDetails = () => {
 
     useEffect(() => {
         axiosForWallpapers.get<IWallpapersResponse>("curated?page=2&per_page=40").then((value) => {
-            console.log(value.data)
             setWallpapers(value.data)
         }).catch((reason) => {
             const error = reason as AxiosError
-            console.log(error)
         })
     }, []);
 
     return (
-        <View my={12}>
+        <View>
             <FlatList
                 data={wallpapers?.photos}
                 keyExtractor={(item) => item.id}
@@ -53,24 +51,9 @@ const AssetDetails = () => {
                 }}
             />
             <Fab onPress={() => signOut()} bg="#9013FE">
-                {/*<FabIcon as={EditIcon}/>*/}
                 <FontAwesome5 name="wallet" size={20} color="white"/>
-                {/*<FabLabel mx={12}>Reset wallet</FabLabel>*/}
             </Fab>
-            {/*{wallpapers?.photos?.map((image) => {*/}
-            {/*    return (*/}
-            {/*        <Image source={{uri: image?.src?.large2x}} alt={image.alt}/>*/}
-            {/*    )*/}
-            {/*})}*/}
 
-            {/*<Button*/}
-            {/*    isDisabled={false}*/}
-            {/*    isFocusVisible={false}*/}
-            {/*    onPress={() => signOut()}*/}
-            {/*>*/}
-            {/*    <ButtonText>Add </ButtonText>*/}
-
-            {/*</Button>*/}
         </View>
     );
 };

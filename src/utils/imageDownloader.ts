@@ -7,23 +7,21 @@ export const downloadImage = async (imageUrl: string) => {
     try {
         const dirInfo = await FileSystem.getInfoAsync(directory);
         if (!dirInfo.exists) {
-            console.log('Creating directory:', directory)
+
             await FileSystem.makeDirectoryAsync(directory, {intermediates: true});
         }
-        console.log('Downloading image from:', imageUrl);
-        console.log('Saving image to:', fileUri);
+
         const downloadResponse = await FileSystem.downloadAsync(imageUrl, fileUri);
 
         if (downloadResponse.status === 200) {
             // Save the downloaded image to the device's media library
-            
             await MediaLibrary.saveToLibraryAsync(downloadResponse.uri);
-            console.log('Image downloaded and saved to the device.');
         } else {
             console.error('Failed to download image. Status:', downloadResponse.status);
+            return {success: true, message: "Error downloading image"}
         }
-        console.log('Image downloaded successfully');
+        return {success: true, message: "Image downloaded successfully"}
     } catch (error) {
-        console.error('Error downloading image:', error);
+        return {success: true, message: "Error downloading image"}
     }
 };

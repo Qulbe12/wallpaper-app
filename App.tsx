@@ -8,7 +8,6 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import HomePage from "./src/pages/HomePage";
 import AssetDetails from "./src/pages/AssetDetails";
 import {createNativeStackNavigator} from "@react-navigation/native-stack";
-import {SafeAreaView} from "react-native-safe-area-context";
 import ImageDetail from "./src/pages/ImageDetail";
 
 const Stack = createNativeStackNavigator();
@@ -51,26 +50,26 @@ const App = () => {
         <AuthContext.Provider value={authContext}>
             <NavigationContainer theme={navTheme}>
                 <GluestackUIProvider config={config}>
-                    <SafeAreaView style={{flex: 1}}>
-                        <Stack.Navigator screenOptions={{
-                            headerShown: false,
-                            headerStyle: {
-                                backgroundColor: "black",
-                            },
-                            contentStyle: {
-                                backgroundColor: "#FBC160",
-                            },
-                        }} initialRouteName="Home">
-                            {!isAuthenticated ? (
-                                <Stack.Screen name="Home" component={HomePage}/>
-                            ) : (
-                                <>
-                                    <Stack.Screen name="Asset Detail" component={AssetDetails}/>
-                                    <Stack.Screen name="image detail" component={ImageDetail}/>
-                                </>
-                            )}
-                        </Stack.Navigator>
-                    </SafeAreaView>
+
+                    <Stack.Navigator screenOptions={{
+                        headerShown: false,
+                        headerStyle: {
+                            backgroundColor: "black",
+                        },
+                        contentStyle: {
+                            backgroundColor: "#FBC160",
+                        },
+                    }} initialRouteName="Home">
+                        {!isAuthenticated ? (
+                            <Stack.Screen name="Home" component={HomePage}/>
+                        ) : (
+                            <>
+                                <Stack.Screen name="Asset Detail" component={AssetDetails}/>
+                                <Stack.Screen name="image detail" component={ImageDetail}/>
+                            </>
+                        )}
+                    </Stack.Navigator>
+
                 </GluestackUIProvider>
             </NavigationContainer>
         </AuthContext.Provider>
