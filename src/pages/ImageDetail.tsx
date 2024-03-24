@@ -22,6 +22,7 @@ import {Dimensions} from "react-native";
 import {Entypo, Feather} from '@expo/vector-icons';
 import * as MediaLibrary from 'expo-media-library';
 import {applyWallpaper} from "@codeooze/react-native-wallpaper-manager";
+import {setMobileWallpaper} from "../modules/WallpaperModule";
 
 
 const ImageDetail = () => {
@@ -111,7 +112,8 @@ const ImageDetail = () => {
                 >
                     <MenuItem onPress={async () => {
                         await requestPermission()
-                        setWallpaper(item?.src?.original, "home")
+                        // setWallpaper(item?.src?.original, "home")
+                        await setMobileWallpaper(item?.src?.original, "home")
                         // const downloadRes = await downloadImage(item?.src?.original)
                         // showToast(downloadRes.message, downloadRes.success)
                     }} key="Community" textValue="Community">
